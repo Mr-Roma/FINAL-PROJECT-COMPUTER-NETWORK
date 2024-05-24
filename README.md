@@ -6,7 +6,7 @@
 
 
 ## Group Members
-| NIM        | Name                                | Tugas                                   |
+| NIM        | Name                                | Tasks                                   |
 | --------   | ---------------------------         |-----------------------------------------|
 | 1301225492 | Romario Viegas Francisco Marcal     |   
 | 1301224458 | Ari Ramadhan                        | 
