@@ -17,7 +17,13 @@ def handle_client(client_socket, addr):
                     fin = open('.' + filename, 'rb')
                     content = fin.read()
                     fin.close()
-                    response = b'HTTP/1.1 200 OK\n\n' + content
+                    response = b'HTTP/1.1 200 OK\nContent-Type: image/' + file_type.encode() + b'\n\n' + content
+                elif file_type in ["html", "css", "js"]:
+                    fin = open('.' + filename, 'r')
+                    content = fin.read()
+                    fin.close()
+                    response = 'HTTP/1.1 200 OK\nContent-Type: text/' + file_type + '\n\n' + content
+                    response = response.encode()
                 else:
                     fin = open('.' + filename, 'rb')  # Open in binary mode
                     content = fin.read()
