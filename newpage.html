@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Options</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden; /* Ensure animation doesn't create scrollbars */
+            position: relative; /* Required for absolute positioning of glass */
+        }
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+        #options {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            margin-left: 40px;
+        }
+        .option {
+            margin-right: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+      
+        /* Frosted Glass Effect */
+        .glass {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(10px);
+            z-index: -1; /* Ensure it's behind other content */
+            border-radius: 5px; /* Same as option */
+        }
+        /* Animation */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        .glass-animation {
+            animation: bounce 2s infinite alternate; /* Adjust timing as needed */
+        }
+        .folder-image img {
+            width: 80%;
+            height: 50%;
+        }
+
+        .folder-label {
+            width: 100%;
+            height: 40%;
+            line-height: 20px;
+            background-color: #ccc;
+            border-top: 1px solid #000;
+        }
+        .folder-image img {
+            width: 80%;
+            height: 50%;
+            transition: transform 0.3s ease-in-out; /* Add this line */
+        }
+        
+        .folder-image:hover img {
+            transform: scale(1.1); /* Add this block */
+        }
+    </style>
+</head>
+<body>
+    <!-- Frosted Glass Effect -->
+    <div class="glass glass-animation"></div>
+    
+    <h1>Data Options</h1>
+    <div id="options">
+            <a href="image_page.html">
+                <div class="folder-image">
+                    <img src="images.png" alt="Image">
+                </div>
+            </a>
+
+            <a href="text_page.html">
+                <div class="folder-image">
+                    <img src="fonts.png" alt="Text">
+                </div>
+            </a>
+            <a href="icon_page.html">
+                <div class="folder-image">
+                    <img src="icons.png" alt="Icon">
+                </div>
+            </a>
+            <a href="gif_page.html">
+                <div class="folder-image">
+                    <img src="gif.png" alt="GIF">
+                </div>
+            </a>
+    </div>
+</body>
+</html>

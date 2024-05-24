@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Ensure animation doesn't create scrollbars */
+            position: relative; /* Required for absolute positioning of glass */
+        }
+        h1 {
+            color: #333;
+            position: relative;
+            z-index: 1; /* Ensure text is above glass balls */
+        }
+        #data {
+            margin-top: 20px;
+            display: flex;
+        }
+        .data-option {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .data-option img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+/*Make the Laod Data button hovered*/
+        #loadData {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        #loadData:hover {
+            transform: scale(1.1);
+        }
+
+        /* Frosted Glass Effect */
+        .glass {
+            position: absolute;
+            width: 100px; /* Adjust size of the glass ball */
+            height: 100px; /* Adjust size of the glass ball */
+            border-radius: 50%; /* Make it a circle */
+            transition: transform 1s ease; /* Add transition for smooth hover effect */
+        }
+        
+        .glass:hover {
+            transform: scale(1.2); /* Increase size of the glass ball on hover */
+        }
+        /* Positioning and individual styles of glass balls */
+        .glass-1 {
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            backdrop-filter: blur(10px);
+            z-index: -1; /* Ensure it's behind other content */
+            background-color: rgba(255, 0, 0, 0.3); /* Adjust transparency and color */
+        }
+        .glass-2 {
+            top: 250px;
+            left: 25%;
+            backdrop-filter: blur(10px);
+            z-index: -1; /* Ensure it's behind other content */
+            background-color: rgba(0, 255, 0, 0.3); /* Adjust transparency and color */
+        }
+        .glass-3 {
+            top: 200px;
+            left: 75%;
+            backdrop-filter: blur(10px);
+            z-index: -1; /* Ensure it's behind other content */
+            background-color: rgba(0, 0, 255, 0.3); /* Adjust transparency and color */
+        }
+        .glass-4 {
+            top: 300px;
+            left: 50%;
+            transform: translateX(-20%);
+            backdrop-filter: blur(10px);
+            z-index: -1; /* Ensure it's behind other content */
+            background-color: rgba(255, 255, 0, 0.3); /* Adjust transparency and color */
+        }
+        /* Animation */
+        @keyframes bounce {
+            0% {
+                transform: translateY(-170px) translateX(-150px);
+            }
+            25% {
+                transform: translateY(-20px) translateX(-20px);
+            }
+            50% {
+                transform: translateY(-40px) translateX(20px);
+            }
+            90% {
+                transform: translateY(-60px) translateX(-60px);
+            }
+        }
+        /* Apply animation to all glass balls */
+        .glass-1 {
+            animation: bounce 4s infinite alternate;
+        }
+        
+        .glass-2 {
+            animation: bounce 5s 1s infinite alternate; /* 5s duration, 1s delay */
+        }
+        
+        .glass-3 {
+            animation: bounce 6s 2s infinite alternate; /* 6s duration, 2s delay */
+        }
+        
+        .glass-4 {
+            animation: bounce 7s 3s infinite alternate; /* 7s duration, 3s delay */
+        }
+
+ 
+    </style>
+</head>
+<body>
+    <!-- Frosted Glass Effect -->
+    <div class="glass glass-1"></div>
+    <div class="glass glass-2"></div>
+    <div class="glass glass-3"></div>
+    <div class="glass glass-4"></div>
+    
+    <h1>Welcome to Our Server!</h1>
+    <img id="loadData" src="load_data.png" alt="Load Data" style="cursor: pointer; width: 120px; height: 50px;">
+
+    <script>
+        document.getElementById('loadData').addEventListener('click', function() {
+            // Redirect to a new page
+            window.location.href = 'newpage.html';
+        });
+
+    </script>
+</body>
+</html>

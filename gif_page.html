@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            color: #333;
+        }
+        #search-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #image-list .image-item {
+            width: 200px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        #image-list img {
+            width: 100%;
+            height: auto;
+        }
+        #image-list p {
+            padding: 10px;
+            margin: 0;
+            background-color: #f8f8f8;
+            color: #666;
+        }
+        #not-found-message {
+            display: none;
+            color: red;
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="search-input" placeholder="Search gifs...">
+
+    <div id="image-list">
+        <div class="image-item">
+            <img src="gif_1.gif" alt="GIF 1">
+            <p>GIF 1</p>
+        </div>
+        <div class="image-item">
+            <img src="gif_2.gif" alt="GIF 2">
+            <p>GIF 2</p>
+        </div>
+        <div class="image-item">
+            <img src="gif_3.gif" alt="GIF 3">
+            <p>GIF 3</p>
+        </div>
+        <div class="image-item">
+            <img src="gif_4.gif" alt="GIF 4">
+            <p>GIF 4</p>
+        </div>
+        <!-- Add more gifs as needed -->
+    </div>
+
+    <p id="not-found-message">Not Found</p>
+
+    <script>
+        document.getElementById('search-input').addEventListener('input', function(e) {
+            var searchValue = e.target.value.toLowerCase();
+            var imageItems = document.getElementById('image-list').getElementsByClassName('image-item');
+            var matchCount = 0;
+
+            for (var i = 0; i < imageItems.length; i++) {
+                var imageName = imageItems[i].getElementsByTagName('p')[0].innerText.toLowerCase();
+
+                if (imageName.indexOf(searchValue) > -1) {
+                    imageItems[i].style.display = '';
+                    matchCount++;
+                } else {
+                    imageItems[i].style.display = 'none';
+                }
+            }
+
+            document.getElementById('not-found-message').style.display = matchCount > 0 ? 'none' : 'block';
+        });
+    </script>
+</body>
+</html>

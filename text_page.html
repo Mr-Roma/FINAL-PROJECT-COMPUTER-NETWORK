@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .font-item {
+            cursor: pointer;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .font-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .font-item:hover {
+            background-color: #f0f0f0;
+        }
+        #sample-text {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="search-input" placeholder="Search fonts..." style="width: 100%; padding: 10px; margin-bottom: 20px;">
+
+    <div class="font-item" data-font="arial" style="font-family: Arial;" onclick="selectFont('Arial')">
+        <img src="arial-font.png" alt="Arial">
+        Arial
+    </div>
+    <div class="font-item" data-font="courier new" style="font-family: 'Courier New';" onclick="selectFont('Courier New')">
+        <img src="courier.png" alt="Courier New">
+        Courier New
+    </div>
+    <div class="font-item" data-font="georgia" style="font-family: 'Georgia';" onclick="selectFont('Georgia')">
+        <img src="georgia.jpg" alt="Georgia">
+        Georgia
+    </div>
+    <div class="font-item" data-font="times new roman" style="font-family: 'Times New Roman';" onclick="selectFont('Times New Roman')">
+        <img src="times_new_roman.jpg" alt="Times New Roman">
+        Times New Roman
+    </div>
+    <div class="font-item" data-font="verdana" style="font-family: 'Verdana';" onclick="selectFont('Verdana')">
+        <img src="verdana.jpg" alt="Verdana">
+        Verdana
+    </div>
+
+    
+    <h2>This is a sample text</h2>
+    <div id="sample-text">The quick brown fox jumps over the lazy dog</div>
+
+    <script>
+        document.getElementById('search-input').addEventListener('input', function(e) {
+            var searchValue = e.target.value.toLowerCase();
+            var fontItems = document.getElementsByClassName('font-item');
+
+            for (var i = 0; i < fontItems.length; i++) {
+                var fontName = fontItems[i].getAttribute('data-font');
+
+                if (fontName.indexOf(searchValue) > -1) {
+                    fontItems[i].style.display = '';
+                } else {
+                    fontItems[i].style.display = 'none';
+                }
+            }   
+        });
+
+        function selectFont(font) {
+            document.getElementById('sample-text').style.fontFamily = font;
+        }
+    </script>
+</body>
+</html>
