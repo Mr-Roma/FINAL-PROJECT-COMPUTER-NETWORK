@@ -1,5 +1,4 @@
 import socket
-import os
 
 def handle_client(client_socket, addr):
     request = client_socket.recv(1024).decode()
