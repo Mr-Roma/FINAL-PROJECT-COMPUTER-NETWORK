@@ -2,6 +2,7 @@
 
 ![DnC Program](./assets/interface/home_1.png "DnC Program")
 ![DnC Program](./assets/interface/home_2.png "DnC Program")
+![DnC Program](./assets/interface/home_3.png "DnC Program")
 
 
 

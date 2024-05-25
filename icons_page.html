@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            color: #333;
+        }
+        #search-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #icon-list .icon-item {
+            width: 200px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        #icon-list img {
+            width: 100%;
+            height: auto;
+        }
+        #icon-list p {
+            padding: 10px;
+            margin: 0;
+            background-color: #f8f8f8;
+            color: #666;
+        }
+        #not-found-message {
+            display: none;
+            color: red;
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="search-input" placeholder="Search icons...">
+
+    <div id="icon-list">
+        <div class="icon-item">
+            <img src="assets/icons/car.png" alt="Icon 1">
+            <p>Car</p>
+        </div>
+        <div class="icon-item">
+            <img src="assets/icons/gift.png" alt="Icon 2">
+            <p>Gift</p>
+        </div>
+        <div class="icon-item">
+            <img src="assets/icons/i_love_you.png" alt="Icon 3">
+            <p>I lOVE YOU</p>
+        </div>
+        <div class="icon-item">
+            <img src="assets/icons/whales.png" alt="Icon 4">
+            <p>Whales</p>
+        </div>
+        <!-- Add more icons as needed -->
+    </div>
+
+    <p id="not-found-message">Not Found</p>
+
+    <script>
+        document.getElementById('search-input').addEventListener('input', function(e) {
+            var searchValue = e.target.value.toLowerCase();
+            var iconItems = document.getElementById('icon-list').getElementsByClassName('icon-item');
+            var matchCount = 0;
+
+            for (var i = 0; i < iconItems.length; i++) {
+                var iconName = iconItems[i].getElementsByTagName('p')[0].innerText.toLowerCase();
+
+                if (iconName.indexOf(searchValue) > -1) {
+                    iconItems[i].style.display = '';
+                    matchCount++;
+                } else {
+                    iconItems[i].style.display = 'none';
+                }
+            }
+
+            document.getElementById('not-found-message').style.display = matchCount > 0 ? 'none' : 'block';
+        });
+    </script>
+</body>
+</html>
