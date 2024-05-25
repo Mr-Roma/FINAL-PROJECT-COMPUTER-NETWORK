@@ -43,35 +43,38 @@ git clone https://github.com/Mr-Roma/Final-Project-Socket-Programming.git
 │
 └─── assets
       ├─ fonts
-      │    ├─ 
-      │    ├─ button_2.png
-      │    ├─ button_3.png
-      │    ├─ button_4.png
-      │    ├─ entry_1.png
-      │    ├─ entry_2.png
-      │    └─ image_1.png
+      │    ├─ arial-font.png
+      │    ├─ courier.png
+      │    ├─ georgia.png
+      │    ├─ times_new_roman.jpg
+      │    ├─ verdana.jpg
       ├─ gifs
-      ├    ├─ 
-      │    ├─ button_2.png
-      │    ├─ button_3.png
-      │    ├─ button_4.png
-      │    ├─ entry_1.png
-      │    ├─ entry_2.png
-      │    └─ image_1.png
+      │    ├─ gif_2.gif
+      │    ├─ gif_3.gif
+      │    ├─ gif_4.gif
       ├─ images
-      |    ├─
-      |    ├─
-      |    ├─
-      |    ├─
+      |    ├─ gif_1.gif
+      |    ├─ image_1.jpeg
+      |    ├─ image_2.jpeg
+      |    ├─ image_3.jpeg
+      |    ├─ image_4.jpeg
       ├─ interface
-      |    ├─
+      |    ├─ home_1.png
+      |    ├─ home_2.png
       └─ widgets
-|
-|
-|
-|
-|
-|
-|
-|
+      |    ├─ fonts.png
+      |    ├─ gif.png
+      |    ├─ icons.png
+      |    ├─ images.png
+      |    ├─ load_data.png
+| client.py
+| gif_page.html
+| image_page.html
+| index.html
+| newpage.html
+| print.py
+| README.md
+| server.py
+| server2.py
+| text_page.html
 ```
