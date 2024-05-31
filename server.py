@@ -5,47 +5,51 @@ def handle_client(client_socket, addr):
     headers = request.split('\n')
     if headers and headers[0]:
         parts = headers[0].split()
-        if len(parts) > 1:
+        if len(parts) > 2 and parts[0] == 'GET':
             filename = parts[1]
+            print(f"Client {addr[0]}:{addr[1]} is requesting file: {filename}")
             if filename == '/':
                 filename = '/index.html'
 
             try:
                 file_type = filename.split('.')[-1]
                 if file_type in ["jpg", "gif", "png", "webp", "ico"]:
-                    fin = open('.' + filename, 'rb')
-                    content = fin.read()
-                    fin.close()
-                    response = b'HTTP/1.1 200 OK\nContent-Type: image/' + file_type.encode() + b'\n\n' + content
+                    with open('.' + filename, 'rb') as fin:
+                        content = fin.read()
+                    response = b'HTTP/1.1 200 OK\nContent-Type: image/' + file_type.encode() + b'\nContent-Length: ' + str(len(content)).encode() + b'\n\n' + content
                 elif file_type in ["html", "css", "js"]:
-                    fin = open('.' + filename, 'r')
-                    content = fin.read()
-                    fin.close()
-                    response = 'HTTP/1.1 200 OK\nContent-Type: text/' + file_type + '\n\n' + content
+                    with open('.' + filename, 'r') as fin:
+                        content = fin.read()
+                    response = 'HTTP/1.1 200 OK\nContent-Type: text/' + file_type + '\nContent-Length: ' + str(len(content)) + '\n\n' + content 
                     response = response.encode()
                 else:
-                    fin = open('.' + filename, 'rb')  # Open in binary mode
-                    content = fin.read()
-                    fin.close()
-                    response = b'HTTP/1.1 200 OK\n\n' + content  # Response is bytes
+                    with open('.' + filename, 'rb') as fin:  # Open in binary mode
+                        content = fin.read()
+                    response = b'HTTP/1.1 200 OK\nContent-Length: ' + str(len(content)).encode() + b'\n\n' + content  # Response is bytes
+
+                print(f"Sending 200 OK response to client {addr[0]}:{addr[1]} for file: {filename}")
 
             except FileNotFoundError:
+                print(f"Client {addr[0]}:{addr[1]} requested a file that was not found: {filename}")
                 response = 'HTTP/1.1 404 NOT FOUND\n\nFile Not Found'
                 response = response.encode()  # Encode here
+                print(f"Sending 404 NOT FOUND response to client {addr[0]}:{addr[1]} for file: {filename}")
         else:
-            print("Invalid HTTP request line:", headers[0])
+            print(f"Invalid HTTP request line from client {addr[0]}:{addr[1]}: {headers[0]}")
             response = 'HTTP/1.1 400 BAD REQUEST\n\nInvalid HTTP request line'
             response = response.encode()  # Encode here
+            print(f"Sending 400 BAD REQUEST response to client {addr[0]}:{addr[1]} due to invalid request line: {headers[0]}")
     else:
-        print("Empty request received")
+        print(f"Empty request received from client {addr[0]}:{addr[1]}")
         response = 'HTTP/1.1 400 BAD REQUEST\n\nEmpty request received'
         response = response.encode()  # Encode here
+        print(f"Sending 400 BAD REQUEST response to client {addr[0]}:{addr[1]} due to empty request")
 
     client_socket.send(response)
     client_socket.close()
 
 def server():
-    ip_address = socket.gethostbyname(socket.gethostname())
+    ip_address = '127.0.0.2'
     port = 1234
     """Creates a server that handles one HTTP request at a time."""
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

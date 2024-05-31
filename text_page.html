@@ -6,18 +6,31 @@
     <title>Document</title>
     <style>
         .font-item {
+            width: 70px;
+            height: auto;
             cursor: pointer;
             margin: 10px;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            display: flex;
-            align-items: center;
+            display: block; /* Changed from flex to block */
+            text-align: center; /* Added to center the text and image */
+        }
+        #search-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
         .font-item img {
             width: 50px;
-            height: 50px;
+            height: auto;
             margin-right: 10px;
+            display: block;
+            margin: auto; /* Added to make the image a block element */
+ /* Added to center the image */
         }
         .font-item:hover {
             background-color: #f0f0f0;
@@ -31,7 +44,7 @@
     </style>
 </head>
 <body>
-    <input type="text" id="search-input" placeholder="Search fonts..." style="width: 100%; padding: 10px; margin-bottom: 20px;">
+    <input type="text" id="search-input" placeholder="Search fonts...">
 
     <div class="font-item" data-font="arial" style="font-family: Arial;" onclick="selectFont('Arial')">
         <img src="assets/fonts/arial-font.png" alt="Arial">
