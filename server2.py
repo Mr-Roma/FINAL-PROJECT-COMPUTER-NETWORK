@@ -9,7 +9,7 @@ def handle_client(client_socket, addr):
             filename = parts[1]
             print(f"Client {addr[0]}:{addr[1]} is requesting file: {filename}")
             if filename == '/':
-                filename = '/courier.png'
+                filename = '/index.html'
 
             try:
                 file_type = filename.split('.')[-1]

@@ -44,7 +44,8 @@ def handle_client(client_socket, addr):
         response = 'HTTP/1.1 400 BAD REQUEST\n\nEmpty request received'
         response = response.encode()  # Encode here
         print(f"Sending 400 BAD REQUEST response to client {addr[0]}:{addr[1]} due to empty request")
-
+#setelah kirim response, socket ditutup karena ini ciri khas dari HTTP/1.0,  
+#dimana setelah kirim response, socket ditutup, dan jika ada lagi request maka a new TCP connection akan di setup lagi
     client_socket.send(response)
     client_socket.close()
 
