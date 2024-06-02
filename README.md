@@ -7,11 +7,11 @@
 
 
 ## Group Members
-| NIM        | Name                                | Tasks                                   |
-| --------   | ---------------------------         |-----------------------------------------|
-| 1301225492 | Romario Viegas Francisco Marcal     |   
-| 1301224458 | Ari Ramadhan                        | 
-| 1301224458 | Laode Muhammad                      | 
+| NIM        | Name                                | Tasks                                            |
+| --------   | ---------------------------         |--------------------------------------------------|
+| 1301225492 | Romario Viegas Francisco Marcal     |   Design the Web server and Multi-thread Server  | 
+| 1301224458 | Ari Ramadhan                        |   Single-thread server                           |
+| 1301224458 | Laode Muhammad                      |   Client server                                  |
 
 ## About this project
 - Demonstrate the Web server using Socket Programming. By making the simple server that can load some several data like images, fonts, gifs and icons. 
